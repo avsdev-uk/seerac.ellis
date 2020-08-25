@@ -1,13 +1,19 @@
 Package: seerac.ellis
-Title: What the Package Does (One Line, Title Case)
+Title: Benthic Recovery Algorithm for the SEERAC Project
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Steve",
+           family = "Pegg",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "steve@avsdev.uk")
+    person(given = "Craig",
+           family = "Williams",
+           role = c("aut", "cre"),
+           email = "craig@avsdev.uk")
+Description: Benthic recovery algorithm for the SEERAC project utilising GPU CUDA. Based off the Ellis et al paper.
+License: LGPL-3
 Encoding: UTF-8
 LazyData: true
+NeedsCompilation: yes
+OS_type: unix
+RoxygenNote: 7.0.2

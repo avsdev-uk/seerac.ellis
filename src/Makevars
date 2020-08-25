@@ -1,0 +1,20 @@
+# See Section 1.2.1 "Using 'Makevars'" of Writing R Extensions
+# cran.r-project.org/doc/manuals/R-exts.pdf
+
+CUDA_PATH?=/usr
+PKG_CFLAGS=-I${CUDA_PATH}/include
+PKG_LIBS=-L${CUDA_PATH}/lib seerac-ellis_cuda.a -lcudart
+
+NVCC=${CUDA_PATH}/bin/nvcc
+
+.PHONY: all cuda
+
+all: cuda $(SHLIB)
+
+cuda:
+	@echo "- Building CUDA files"; \
+	${NVCC} -Xcompiler -fPIC -arch=sm_35 -lib seerac-ellis.cu -o seerac-ellis_cuda.a
+
+clean:
+	rm -rf $(SHLIB) $(OBJECTS); \
+	rm -rf seerac-ellis_cuda.a
