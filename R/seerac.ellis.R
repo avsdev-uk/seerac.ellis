@@ -8,7 +8,7 @@
 #'
 #' @docType package
 #' @name seerac.ellis
-#' @useDynLib seerac.ellis
+#' @useDynLib seerac_ellis, .registration = TRUE
 NULL
 #> NULL
 
@@ -29,7 +29,7 @@ testModeOff <- function() {
 #' @param mode integer, 0 for normal, 1 for test.
 #' @export
 setMode <- function(mode) {
-  .Call("seeracEllis_setMode", as.integer(mode), PACKAGE = "seerac.ellis")
+  .Call(seeracEllis_setMode, as.integer(mode))
   invisible(0)
 }
 #' Get the current mode
@@ -37,7 +37,7 @@ setMode <- function(mode) {
 #' @return The current mode. 0 for normal, 1 for test.
 #' @export
 getMode <- function() {
-  .Call("seeracEllis_getMode", PACKAGE = "seerac.ellis")
+  .Call(seeracEllis_getMode)
 }
 
 #' Turns on basic debug messaging
@@ -58,7 +58,7 @@ debugOff <- function() {
 #' @param debug integer, 0 for off, 1 for basic, 2 for advanced
 #' @export
 setDebug <- function(debug) {
-  .Call("seeracEllis_setDebug", as.integer(debug), PACKAGE = "seerac.ellis")
+  .Call(seeracEllis_setDebug, as.integer(debug))
   invisible(0)
 }
 #' Get the current debug messaging level
@@ -66,7 +66,7 @@ setDebug <- function(debug) {
 #' @return The current debug messaging level, 0 for off, 1 for basic, 2 for advanced.
 #' @export
 getDebug <- function() {
-  .Call("seeracEllis_getDebug", PACKAGE = "seerac.ellis")
+  .Call(seeracEllis_getDebug)
 }
 
 #' Emulate the original implementation of the Benthic Recovery algorithm which saved all the input
@@ -77,7 +77,7 @@ getDebug <- function() {
 #' @return The result of the algorithm. 0 for success, negative number for error
 #' @export
 seerac.ellisWithFiles <- function(offsets) {
-  .Call("seeracEllis_withFiles", as.integer(offsets), PACKAGE = "seerac.ellis")
+  .Call(seeracEllis_withFiles, as.integer(offsets))
 }
 
 #' Wrapper for passing in lookups and data into the compiled CUDA implementation of the Benthic
@@ -97,12 +97,11 @@ seerac.ellis <- function(offsets, lookup, data) {
   )
 
   ret <- .Call(
-    "seeracEllis_withoutFiles",
+    seeracEllis_withoutFiles,
     as.integer(offsets),
     as.integer(t(lookup)),
     t(data),
-    results,
-    PACKAGE = "seerac.ellis"
+    results
   )
   if (ret != 0) {
     warning("seerac.ellis failed to compute")

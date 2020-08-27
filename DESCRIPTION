@@ -1,6 +1,6 @@
 Package: seerac.ellis
 Title: Benthic Recovery Algorithm for the SEERAC Project
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Steve",
            family = "Pegg",
@@ -17,3 +17,5 @@ LazyData: true
 NeedsCompilation: yes
 OS_type: unix
 RoxygenNote: 7.0.2
+Suggests: 
+    testthat
