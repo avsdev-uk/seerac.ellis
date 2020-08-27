@@ -1,0 +1,6 @@
+^LICENSE\.md$
+^\.git$
+^\.gitignore$
+^src/ellis$
+^build$
+^Makefile$

@@ -40,3 +40,7 @@ src/seerac-ellis.o
 src/seerac-ellis_cuda.a
 
 src/seerac.ellis.so
+
+src/ellis
+
+build/
