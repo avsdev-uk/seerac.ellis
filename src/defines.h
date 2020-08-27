@@ -1,0 +1,22 @@
+#ifndef __SEERAC_ELLIS_DEFINES_H__
+#define __SEERAC_ELLIS_DEFINES_H__
+
+#define NUMPERIODS 0
+#define NUMDATAPERIODS 1
+#define NUMREGS 2
+#define NUMCOMPETES 3
+#define NUMGEARS 4
+#define NUMSPECIES 5
+#define LOOKUPHEIGHT 6
+#define LOOKUPWIDTH 7
+#define MAXOFFSETS 8
+
+#define NORMAL_MODE 0
+#define TEST_MODE 1
+
+// These....
+#define MAXLOOKUPWIDTH 16
+#define MAXLOOKUPHEIGHT 512
+#define NUMVALUES 6
+
+#endif // __SEERAC_ELLIS_DEFINES_H__

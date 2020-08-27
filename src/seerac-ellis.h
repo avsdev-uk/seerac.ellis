@@ -1,35 +1,19 @@
-#ifndef __SEERAC_ELLIS_CUDA_HPP__
-#define __SEERAC_ELLIS_CUDA_HPP__
+#ifndef __SEERAC_ELLIS_H__
+#define __SEERAC_ELLIS_H__
 
-#define NUMPERIODS 0
-#define NUMDATAPERIODS 1
-#define NUMREGS 2
-#define NUMCOMPETES 3
-#define NUMGEARS 4
-#define NUMSPECIES 5
-#define LOOKUPHEIGHT 6
-#define LOOKUPWIDTH 7
-#define MAXOFFSETS 8
+#include "host_device_matrix.h"
 
-#define MAXLOOKUPWIDTH 16
-#define MAXLOOKUPHEIGHT 512
 
-// Why is this 6?
-#define NUMVALUES 6
+void setDebug(int debug);
+int getDebug();
 
-#define NORMAL_MODE 0
-#define TEST_MODE 1
+void setMode(int mode);
+int getMode();
 
-struct HostDeviceMatrix {
-  int width = 0;
-  int height = 0;
-  double *host = 0;
-  double *device = 0;
-};
-typedef HostDeviceMatrix DataMatrix;
-typedef HostDeviceMatrix ResultsMatrix;
 
-int hostCalcEllis(int mode, const int *const offset, const int *const lookup, DataMatrix cellData,
-  ResultsMatrix results, int debug = 0);
+int runEllis(const int *const offset, const size_t offsetSize, const int *const lookup,
+  const size_t lookupSize, DataMatrix data, ResultsMatrix *results);
 
-#endif // __SEERAC_ELLIS_CUDA_HPP__
+int runEllisWithFiles(const int *const offset, const size_t offsetSize);
+
+#endif // __SEERAC_ELLIS_H__

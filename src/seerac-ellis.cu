@@ -1,4 +1,5 @@
-#include "seerac-ellis.hpp"
+#include "seerac-ellis_cuda.h"
+#include "defines.h"
 
 #include <cstdio>
 #include <string>
@@ -302,8 +303,6 @@ __global__ void calcEllis(DataMatrix cellData, ResultsMatrix results)
   } // for PeriodIdx
   __syncthreads();
 }
-
-
 
 
 
