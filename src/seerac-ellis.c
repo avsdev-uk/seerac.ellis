@@ -161,6 +161,24 @@ int saveResults(ResultsMatrix results, const char *fPath)
 int runEllis(const int *const offset, const size_t offsetSize, const int *const lookup,
   const size_t lookupSize, DataMatrix data, ResultsMatrix *results)
 {
+  if (offsetSize < MAXOFFSETS) {
+    printE("Offset array is not long enough (got %lu, expected %d)\n", offsetSize, MAXOFFSETS);
+    return -1;
+  }
+  if (offsetSize > MAXOFFSETS) {
+    printE("Offset array is too long (got %lu, expected %d)\n", offsetSize, MAXOFFSETS);
+    return -1;
+  }
+
+  if (lookupSize > MAXLOOKUPWIDTH * MAXLOOKUPHEIGHT) {
+    printE(
+      "Size of lookup matrix exceeds maximum allowed size (got %lu, max %d)\n",
+      lookupSize,
+      MAXLOOKUPWIDTH * MAXLOOKUPHEIGHT
+    );
+    return -1;
+  }
+
   if (results->host == 0) {
     results->height = data.height;
     results->width = offset[NUMPERIODS] * offset[NUMSPECIES] * NUMVALUES;
