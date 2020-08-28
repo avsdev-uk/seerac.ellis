@@ -13,28 +13,34 @@ SEXP seeracEllis_getMaxGPUMem()
   return Rf_ScalarReal(getMaxGPUMem());
 }
 
-void seeracEllis_setMode(SEXP r_mode) {
+void seeracEllis_setMode(SEXP r_mode)
+{
   setMode(Rf_asInteger(r_mode));
 }
-SEXP seeracEllis_getMode() {
+SEXP seeracEllis_getMode()
+{
   return Rf_ScalarInteger(getMode());
 }
 
-void seeracEllis_setDebug(SEXP r_debug) {
+void seeracEllis_setDebug(SEXP r_debug)
+{
   setDebug(Rf_asInteger(r_debug));
 }
-SEXP seeracEllis_getDebug() {
+SEXP seeracEllis_getDebug()
+{
   return Rf_ScalarInteger(getDebug());
 }
 
 
-SEXP seeracEllis_withFiles(SEXP r_offset) {
+SEXP seeracEllis_withFiles(SEXP r_offset)
+{
   const int *const offset = INTEGER(r_offset);
   int retVal = runEllisWithFiles(offset, LENGTH(r_offset));
   return Rf_ScalarInteger(retVal);
 }
 
-SEXP seeracEllis_withoutFiles(SEXP r_offset, SEXP r_lookup, SEXP r_data, SEXP r_results) {
+SEXP seeracEllis_withoutFiles(SEXP r_offset, SEXP r_lookup, SEXP r_data, SEXP r_results)
+{
   const int *const offset = INTEGER_RO(r_offset);
   const int *const lookup = INTEGER_RO(r_lookup);
 

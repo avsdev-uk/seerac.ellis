@@ -35,11 +35,9 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
-src/seerac-ellis.o
-
-src/seerac-ellis_cuda.a
-
-src/seerac.ellis.so
+src/*.o
+src/*.a
+src/*.so
 
 src/ellis
 

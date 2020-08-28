@@ -41,25 +41,29 @@ double getMaxGPUMem()
 }
 
 
-void setDebug(int debug) {
+void setDebug(int debug) 
+{
   if (debug < 0) {
     printW("Debug < 0. Assuming debug is required to be off (debug = 0)\n");
     debug = 0;
   }
   config.debug = debug;
 }
-int getDebug() {
+int getDebug()
+{
   return config.debug;
 }
 
-void setMode(int mode) {
+void setMode(int mode)
+{
   if (mode != TEST_MODE && mode != NORMAL_MODE) {
     printE("mode == %d. I do not know what mode this is meant to be.\n", mode);
     return;
   }
   config.mode = mode;
 }
-int getMode() {
+int getMode()
+{
   return config.mode;
 }
 
@@ -233,7 +237,8 @@ int runEllis(const int *const offset, const size_t offsetSize, const int *const 
   return res;
 }
 
-int runEllisWithFiles(const int *const offset, const size_t offsetSize) {
+int runEllisWithFiles(const int *const offset, const size_t offsetSize)
+{
   int ret;
   int *lookup;
   DataMatrix data;
