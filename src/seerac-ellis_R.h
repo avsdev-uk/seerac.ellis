@@ -6,6 +6,8 @@
 #include <R.h>
 #include <Rinternals.h>
 
+SEXP seeracEllis_getMaxGPUMem();
+
 void seeracEllis_setMode(SEXP r_mode);
 SEXP seeracEllis_getMode();
 

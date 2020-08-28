@@ -316,24 +316,45 @@ int cuErrorThrown(cudaError_t cu_errno, const char *const file, int const line)
       file, line, (unsigned int)cu_errno, cudaGetErrorName(cu_errno), cudaGetErrorString(cu_errno)
     );
     cudaDeviceReset();
-    return 1;
+    return cu_errno;
   }
   return 0;
 }
 
-int logCudaMemory() {
-  double free_m, total_m, used_m;
-  size_t free_t, total_t;
+int getCudaMemory(double *totalMB, double *freeMB, double *usedMB)
+{
+  size_t free, total;
 
-  if (CU_ERROR_THROWN(cudaMemGetInfo(&free_t, &total_t))) {
-    return 1;
+  int err = CU_ERROR_THROWN(cudaMemGetInfo(&free, &total));
+  if (err) {
+    return err;
   }
 
-  free_m = free_t / (1024.0 * 1024.0);
-  total_m = total_t / (1024.0 * 1024.0);
-  used_m = total_m - free_m;
+  if (totalMB != 0) {
+    *totalMB = total / (1024.0 * 1024.0);
+  }
 
-  printf("MEM: mem free %.2f MB; mem total %.2f MB; mem used %.2f MB\n", free_m, total_m, used_m);
+  if (freeMB != 0) {
+    *freeMB = free / (1024.0 * 1024.0);
+  }
+
+  if (usedMB != 0) {
+    *usedMB = (total - free) / (1024.0 * 1024.0);
+  }
+
+  return 0;
+}
+
+int logCudaMemory()
+{
+  double free, total, used;
+
+  int err = getCudaMemory(&total, &free, &used);
+  if (err) {
+    return err;
+  }
+
+  printf("MEM: mem free %.2f MB; mem total %.2f MB; mem used %.2f MB\n", free, total, used);
 
   return 0;
 }

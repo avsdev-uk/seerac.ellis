@@ -31,6 +31,16 @@ struct t_configuration {
 } config = { 0, 0 };
 
 
+double getMaxGPUMem()
+{
+  double total;
+  if (getCudaMemory(&total, NULL, NULL)) {
+    return -1.0;
+  }
+  return total;
+}
+
+
 void setDebug(int debug) {
   if (debug < 0) {
     printW("Debug < 0. Assuming debug is required to be off (debug = 0)\n");

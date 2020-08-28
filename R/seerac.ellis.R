@@ -12,6 +12,18 @@
 NULL
 #> NULL
 
+#' Get the total memory capacity of the GPU
+#'
+#' @return The maximum memory of the GPU, NULL on failure
+#' @export
+getMaxGPUMemory <- function() {
+  maxMem <- .Call(seeracEllis_getMaxGPUMem)
+  if (maxMem < 0) {
+    return(NULL)
+  }
+  return(maxMem)
+}
+
 #' Turns on test mode
 #'
 #' @export

@@ -3,6 +3,7 @@
 
 #include "host_device_matrix.h"
 
+double getMaxGPUMem();
 
 void setDebug(int debug);
 int getDebug();

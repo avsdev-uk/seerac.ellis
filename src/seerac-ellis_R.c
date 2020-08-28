@@ -8,6 +8,11 @@
 #include "seerac-ellis_R.h"
 
 
+SEXP seeracEllis_getMaxGPUMem()
+{
+  return Rf_ScalarReal(getMaxGPUMem());
+}
+
 void seeracEllis_setMode(SEXP r_mode) {
   setMode(Rf_asInteger(r_mode));
 }

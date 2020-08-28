@@ -3,6 +3,7 @@
 #ifndef WITHOUT_R
 
 static const R_CallMethodDef callMethods[] = {
+   {"seeracEllis_getMaxGPUMem", (DL_FUNC) &seeracEllis_getMaxGPUMem, 0},
    {"seeracEllis_setDebug", (DL_FUNC) &seeracEllis_setDebug, 1},
    {"seeracEllis_getDebug", (DL_FUNC) &seeracEllis_getDebug, 0},
    {"seeracEllis_setMode", (DL_FUNC) &seeracEllis_setMode, 1},

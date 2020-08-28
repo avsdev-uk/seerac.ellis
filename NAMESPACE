@@ -3,6 +3,7 @@
 export(debugOff)
 export(debugOn)
 export(getDebug)
+export(getMaxGPUMemory)
 export(getMode)
 export(seerac.ellis)
 export(seerac.ellisWithFiles)

@@ -7,6 +7,8 @@ extern "C" {
 
 #include "host_device_matrix.h"
 
+int getCudaMemory(double *totalMB, double *freeMB, double *usedMB);
+
 int hostCalcEllis(int mode, const int *const offset, const int *const lookup, DataMatrix cellData,
   ResultsMatrix results, int debug);
 
